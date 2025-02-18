@@ -1,34 +1,39 @@
 <section class="form">
-    <div class="form__field">
-        <label for="title">Título:</label>
-        <input type="text" id="title">
+    @if (isWrapperVisible) {    
+    <div class="wrapper">
+        <div class="form__field">
+            <label for="title">Título:</label>
+            <input type="text" id="title">
+        </div>
+        <div class="form__field">
+            <label for="imageUrl">URL de la imagen:</label>
+            <input type="text" id="imageUrl">
+        </div>
+        <div class="form__field">
+            <label for="date">Fecha de finalización:</label>
+            <input type="date" id="date">
+        </div>
+        <div class="form__field">
+            <label for="review">Reseña:</label>
+            <input type="text" id="review">
+        </div>
+        <div class="form__field star-container" (mouseleave)="resetHover()">
+            <ng-container *ngFor="let star of stars; let i = index">
+            <span class="star"
+                    [ngClass]="{
+                    'full': i + 1 <= tempRating || i + 1 <= rating,
+                    'half': rating === i + 0.5 || tempRating === i + 0.5,
+                    'empty': i + 1 > tempRating && i + 1 > rating
+                    }"
+                    (click)="setRating(tempRating)"
+                    (mousemove)="updateHover(i, $event)">
+                ★
+            </span>
+            </ng-container>
+        </div>
     </div>
-    <div class="form__field">
-        <label for="imageUrl">URL de la imagen:</label>
-        <input type="text" id="imageUrl">
-    </div>
-    <div class="form__field">
-        <label for="review">Reseña:</label>
-        <input type="text" id="review">
-    </div>
-    <div class="form__field--stars">
-        <input id="radio1" type="radio" name="estrellas" value="5">
-        <label for="radio1">★</label>
-        <input id="radio2" type="radio" name="estrellas" value="4">
-        <label for="radio2">★</label>
-        <input id="radio3" type="radio" name="estrellas" value="3">
-        <label for="radio3">★</label>
-        <input id="radio4" type="radio" name="estrellas" value="2">
-        <label for="radio4">★</label>
-        <input id="radio5" type="radio" name="estrellas" value="1">
-        <label for="radio5">★</label>
-    </div>
-    <div class="form__field">
-        <label for="date">Fecha de finalización:</label>
-        <input type="date" id="date">
+    }
+    <div class="btn__div">
+        <button class="btn btn__collapse" (click)="toggleWrapper()">▼</button>
     </div>
 </section>
-
-<form action="">
-    
-</form>
