@@ -1,21 +1,21 @@
 <section class="form">
     @if (isWrapperVisible) {    
     <div class="wrapper">
-        <div class="form__field">
-            <label for="title">Título:</label>
-            <input type="text" id="title">
+        <div class="inputBox">                
+            <input type="text" required="">
+            <span>Título</span>
         </div>
-        <div class="form__field">
-            <label for="imageUrl">URL de la imagen:</label>
-            <input type="text" id="imageUrl">
+        <div class="inputBox">                
+            <input type="text" required="">
+            <span>URL de la imagen</span>
         </div>
-        <div class="form__field">
-            <label for="date">Fecha de finalización:</label>
+        <div class="inputBox">
             <input type="date" id="date">
+            <span>Fecha de finalización</span>
         </div>
-        <div class="form__field">
-            <label for="review">Reseña:</label>
-            <input type="text" id="review">
+        <div class="input-sizer stacked inputBox">
+            <textarea oninput="this.parentNode.dataset.value = this.value" rows="3" required=""></textarea>
+            <span>Reseña</span>
         </div>
         <div class="form__field star-container" (mouseleave)="resetHover()">
             <ng-container *ngFor="let star of stars; let i = index">

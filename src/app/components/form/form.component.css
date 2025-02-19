@@ -1,3 +1,5 @@
+
+
 * {
     font-family: Arial, Helvetica, sans-serif
 }
@@ -6,21 +8,137 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #313131;
+    background-color: whitesmoke;
     color: whitesmoke;
+    margin: 3rem;
+    padding: 1rem 0;
+    border: 3px solid black;
+    border-radius: 3px;
 }
 
-.form__field {
-    margin: 0.6rem 0rem;
-    display: flex;
-    flex-direction: column;
+.inputBox {
+    position: relative;
+    margin: 20px;
 }
 
-.form input {
+.inputBox input, 
+.inputBox textarea {
     padding: 0.5rem;
+    outline: none;
+    background: transparent;
+    border-radius: 3px;
+    color: #212121;
+    border: 1px solid #212121;
+    font-size: 1em;
+    transition: 0.5s ease-in-out;
     width: 15rem;
-    border-radius: 0.8rem;
+    box-shadow: 3px 3px 0px #000;
 }
+
+.inputBox input:hover,
+.inputBox input:focus,
+.inputBox textarea:hover,
+.inputBox textarea:focus {
+    box-shadow: 7px 7px 0px #000;
+}
+
+.inputBox span {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    background: transparent;
+    border-radius: 3px;
+    color: #212121;
+    transition: 0.3s ease-in-out;
+    pointer-events: none;
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.inputBox input:focus + span,
+.inputBox input:valid + span {
+    transform: translateY(-35px) translateX(-5px) scale(0.95);
+    box-shadow: 3px 3px 0px #000;
+    padding: 0 0.5rem;
+    font-size: 0.6em;
+    border: 1px solid #212121;
+    color: #212121;
+    border-radius: 3px;
+    background: #e8e8e8;
+    padding-bottom: 3px;
+}
+
+.inputBox textarea + span {
+    top: 50px; /* Mantiene el span fijo */
+    left: 14px;
+    position: absolute;
+}
+
+
+.inputBox textarea:focus + span,
+.inputBox textarea:valid + span {
+    transform: translateY(-55px) translateX(5px) scale(0.95);
+    box-shadow: 3px 3px 0px #000;
+    padding: 0 0.5rem;
+    font-size: 0.6em;
+    border: 1px solid #212121;
+    color: #212121;
+    border-radius: 3px;
+    background: #e8e8e8;
+    padding-bottom: 3px;
+}
+
+.input-sizer {
+    display: inline-grid;
+    vertical-align: top;
+    align-items: center;
+    position: relative;
+    
+    &.stacked {
+        padding: .5em;
+        align-items: stretch;
+        
+        &::after,
+        input,
+        textarea {
+            grid-area: 2 / 1;
+        }
+      }
+
+    &::after,
+    input,
+    textarea {
+      width: 15rem;
+      grid-area: 1 / 2;
+      padding: 0.25em;
+      margin: 0;
+      resize: none;
+      background: none;
+      appearance: none;
+    }
+
+    &::after {
+        content: attr(data-value) ' ';
+        visibility: hidden;
+        white-space: pre-wrap;
+    }
+}
+
+.input-sizer {
+    > span {
+      
+      padding: 8px;
+      text-transform: uppercase;
+      font-size: 0.8em;
+      font-weight: bold;
+
+    }
+  }
+  
+
 
 .form__field.star-container {
     font-size: 24px;
