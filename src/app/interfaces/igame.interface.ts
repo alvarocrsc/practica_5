@@ -5,3 +5,4 @@ export interface IGame {
     review: string;
     stars: number;
 }
+

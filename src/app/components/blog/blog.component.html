@@ -1,1 +1,14 @@
-<p>blog works!</p>
+<section class="pt-md-5">
+    <div class="container">
+        <div class="row gy-4">
+            @for(game of games; track game.name) {
+            <div class="col-md-4">
+                <app-game-card [myGame]="game"></app-game-card>
+            </div>
+        }
+        </div>
+    </div>
+</section>
+
+
+
