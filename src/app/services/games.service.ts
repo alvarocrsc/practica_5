@@ -9,6 +9,12 @@ export class GamesService {
 
   private gamesArray: IGame[] = games;
 
+  Insert(game: IGame): any {
+    this.gamesArray.push(game);
+    console.log(this.gamesArray);
+    return {status: true, msg: 'Game added successfully'};
+  }
+
   getAll(): IGame[] {
     return this.gamesArray;
   }

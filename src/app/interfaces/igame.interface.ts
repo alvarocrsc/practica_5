@@ -1,8 +1,8 @@
 export interface IGame {
-    name: string;
+    title: string;
     url: string;
     date: Date;
     review: string;
-    stars: number;
+    stars?: number;
 }
 

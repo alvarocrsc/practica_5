@@ -1,14 +1,22 @@
 <section class="pt-md-5">
+    <p class="text-center">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapse">Show Reviews</button>
+    </p>
     <div class="container">
         <div class="row gy-4">
-            @for(game of games; track game.name) {
-            <div class="col-md-4">
+            @for(game of games; track game.title) {
+            <article class="col-12 col-md-6 col-lg-4 col-xl-3">
                 <app-game-card [myGame]="game"></app-game-card>
-            </div>
-        }
+            </article>
+            }
         </div>
     </div>
 </section>
+<footer>
+    <div style="padding: 30px;">
+        
+    </div>
+</footer>
 
 
 

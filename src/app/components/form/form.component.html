@@ -1,39 +1,39 @@
 <section class="form">
-    @if (isWrapperVisible) {    
-    <div class="wrapper">
-        <div class="inputBox">                
-            <input type="text" required="">
-            <span>Título</span>
+    @if (isWrapperVisible) {  
+    <form #gameForm="ngForm" (ngSubmit)="getDataForm(gameForm)">  
+        <div class="wrapper">
+            <div class="inputBox">                
+                <input type="text" required="" id="title" name="title" ngModel>
+                <span>Título</span>
+            </div>
+            <div class="inputBox">                
+                <input type="text" required="" id="url" name="url" ngModel>
+                <span>URL de la imagen</span>
+            </div>
+            <div class="inputBox">
+                <input type="date" id="date" name="date" ngModel>
+                <span>Fecha de finalización</span>
+            </div>
+            <div class="input-sizer stacked inputBox">
+                <textarea oninput="this.parentNode.dataset.value = this.value" rows="3" required="" id="review" name="review" ngModel></textarea>
+                <span>Reseña</span>
+            </div>
+            <div class="form__field star-container" (mouseleave)="resetHover()">
+                <ng-container *ngFor="let star of stars; let i = index">
+                <span class="star"
+                        [ngClass]="{
+                        'full': i + 1 <= tempRating || i + 1 <= rating,
+                        'half': rating === i + 0.5 || tempRating === i + 0.5,
+                        'empty': i + 1 > tempRating && i + 1 > rating
+                        }"
+                        (click)="setRating(tempRating)"
+                        (mousemove)="updateHover(i, $event)">
+                    ★
+                </span>
+                </ng-container>
+            </div>
+            <input type="submit" value="Enviar" class="btn btn-success mt-3">
         </div>
-        <div class="inputBox">                
-            <input type="text" required="">
-            <span>URL de la imagen</span>
-        </div>
-        <div class="inputBox">
-            <input type="date" id="date">
-            <span>Fecha de finalización</span>
-        </div>
-        <div class="input-sizer stacked inputBox">
-            <textarea oninput="this.parentNode.dataset.value = this.value" rows="3" required=""></textarea>
-            <span>Reseña</span>
-        </div>
-        <div class="form__field star-container" (mouseleave)="resetHover()">
-            <ng-container *ngFor="let star of stars; let i = index">
-            <span class="star"
-                    [ngClass]="{
-                    'full': i + 1 <= tempRating || i + 1 <= rating,
-                    'half': rating === i + 0.5 || tempRating === i + 0.5,
-                    'empty': i + 1 > tempRating && i + 1 > rating
-                    }"
-                    (click)="setRating(tempRating)"
-                    (mousemove)="updateHover(i, $event)">
-                ★
-            </span>
-            </ng-container>
-        </div>
-    </div>
+    </form>
     }
-    <div class="btn__div">
-        <button class="btn btn__collapse" (click)="toggleWrapper()">▼</button>
-    </div>
 </section>

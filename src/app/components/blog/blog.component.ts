@@ -16,4 +16,6 @@ export class BlogComponent {
   ngOnInit() {
     this.games = this.gameService.getAll();
   }
+
+  
 }
