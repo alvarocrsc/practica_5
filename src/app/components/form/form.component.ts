@@ -57,8 +57,4 @@ export class FormComponent {
     this.halfStar = null;
     this.tempRating = 0;
   }
-  
-  toggleWrapper() {
-    this.isWrapperVisible = !this.isWrapperVisible;
-  }
 }
