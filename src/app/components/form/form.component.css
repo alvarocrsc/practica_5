@@ -2,7 +2,10 @@
     font-family: Arial, Helvetica, sans-serif
 }
 
-
+.form {
+    display: flex;
+    justify-content: center;
+}
 
 .wrapper {
     display: flex;
@@ -11,8 +14,15 @@
     background-color: rgb(166, 172, 214);
     color: whitesmoke;
     margin: 3rem;
-    padding: 3rem 15rem;
-    box-shadow: 6px 6px 0px #000;
+    padding: 3rem;
+    transition: 0.5s ease-in-out;
+    box-shadow: 6px 6px 0px #ffffff;
+    width: 30rem;
+}
+
+.wrapper:hover {
+    transition: 0.5s ease-in-out;
+    box-shadow: 15px 15px 0px #ffffff;
 }
 
 .inputBox {
