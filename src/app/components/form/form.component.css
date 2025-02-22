@@ -16,13 +16,13 @@
     margin: 3rem;
     padding: 3rem;
     transition: 0.5s ease-in-out;
-    box-shadow: 6px 6px 0px #ffffff;
+    box-shadow: 6px 6px 0px rgb(101, 103, 131);
     width: 30rem;
 }
 
 .wrapper:hover {
     transition: 0.5s ease-in-out;
-    box-shadow: 15px 15px 0px #ffffff;
+    box-shadow: 15px 15px 0px rgb(101, 103, 131);
 }
 
 .inputBox {
@@ -82,11 +82,10 @@
 }
 
 .inputBox textarea + span {
-    top: 50px; /* Mantiene el span fijo */
+    top: 50px; 
     left: 14px;
     position: absolute;
 }
-
 
 .inputBox textarea:focus + span,
 .inputBox textarea:valid + span {
@@ -185,4 +184,91 @@
     font-size: 1.5em;
 }
 
+.button_header {
+    padding: 0.2em 0.3em;
+    width: 7em;
+    height: 3.2em;
+    background-color: #212121;
+    border: 0.08em solid #fff;
+    border-radius: 0.3em;
+    font-size: 10px;
+    cursor: pointer;
+}
+  
+.button_header span {
+    position: relative;
+    font-family: "Montserrat", serif;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0.4em;
+    width: 4.2em;
+    height: 1.7em;
+    background-color: #212121;
+    border-radius: 0.2em;
+    font-size: 1.5em;
+    color: #fff;
+    border: 0.08em solid #fff;
+    box-shadow: 0 0.4em 0.1em 0.019em #fff;
+}
+  
+.button_header span:hover {
+    transition: all 0.5s;
+    transform: translate(0, 0.4em);
+    box-shadow: 0 0 0 0 #fff;
+}
+  
+.button_header span:not(hover) {
+    transition: all 1s;
+}
+  
+  .error {
+    display: flex;
+    justify-content: flex-end;
+    color: rgb(125, 0, 0);
+    font-family: "Montserrat", serif;
+    font-size: 0.6em;
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+.inputBox input.ng-invalid.ng-touched, 
+.inputBox textarea.ng-invalid.ng-touched {
+    border-color: rgb(125, 0, 0);
+    box-shadow: 3px 3px 0px rgb(125, 0, 0);
+}
+
+.inputBox input.ng-invalid.ng-touched + span {
+    transform: translateY(-18px) scale(0.95);
+}
+
+.inputBox textarea.ng-invalid.ng-touched + span {
+    transform: translateY(2px) scale(0.95);
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+}
+
+.inputBox input.ng-invalid.ng-touched, 
+.inputBox textarea.ng-invalid.ng-touched {
+    animation: shake 0.3s ease-in-out;
+}
+
+.inputBox input.ng-invalid.ng-touched:hover,
+.inputBox input.ng-invalid.ng-touched:focus,
+.inputBox textarea.ng-invalid.ng-touched:hover,
+.inputBox textarea.ng-invalid.ng-touched:focus {
+    box-shadow: 7px 7px 0px rgb(125, 0, 0);
+}
+
+
+.inputBox input[type="date"] + span {
+    display: none;
+}
 

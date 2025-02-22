@@ -4,8 +4,8 @@
             <img src="images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top logo">
             ameloggd
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler button_header" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="">LOG</span>
         </button>
     </div>
 </nav>
@@ -14,20 +14,33 @@
         <form class="form" #gameForm="ngForm" (ngSubmit)="getDataForm(gameForm)">  
             <div class="wrapper">
                 <div class="inputBox">                
-                    <input type="text" required="" id="title" name="title" ngModel>
-                    <span>Título</span>
+                    <input type="text" id="title" name="title" ngModel required #title="ngModel">
+                    <span>Title</span>
+                    @if(title.invalid && title.touched){
+                        <div class="error">Title is required</div>
+                    } 
                 </div>
                 <div class="inputBox">                
-                    <input type="text" required="" id="url" name="url" ngModel>
-                    <span>URL de la imagen</span>
+                    <input type="text" id="url" name="url" ngModel required #url="ngModel">
+                    <span>Image URL</span>
+                    @if(url.invalid && url.touched){
+                        <div class="error">Image URL is required</div>
+                    }
                 </div>
                 <div class="inputBox">
-                    <input type="date" id="date" name="date" ngModel>
-                    <span>Fecha de finalización</span>
+                    <input type="date" id="date" name="date" ngModel required #date="ngModel">
+                    <span>End date</span>
+                    @if(date.invalid && date.touched){
+                        <div class="error">End date is required</div>
+                    }
                 </div>
                 <div class="input-sizer stacked inputBox">
-                    <textarea oninput="this.parentNode.dataset.value = this.value" rows="3" required="" id="review" name="review" ngModel></textarea>
-                    <span>Reseña</span>
+                    <textarea oninput="this.parentNode.dataset.value = this.value" rows="3" id="review" 
+                      name="review" ngModel required #review="ngModel"></textarea>
+                    <span>Review</span>
+                    @if(review.invalid && review.touched){
+                        <div class="error">Review is required</div>
+                    }
                 </div>
                 <div class="form__field star-container" (mouseleave)="resetHover()">
                     <ng-container *ngFor="let star of stars; let i = index">
@@ -43,7 +56,7 @@
                     </span>
                     </ng-container>
                 </div>
-                <input type="submit" value="Enviar" class="btn btn-dark mt-3">
+                <input type="submit" value="Submit" class="btn btn-dark mt-3" [disabled]="gameForm.invalid">
             </div>
         </form>        
     </div>

@@ -1,12 +1,13 @@
-
 <div class="card h-100">
     <img [src]="myGame()?.url" class="card-img-top " alt="">
-    <div class="collapse multi-collapse" id="multiCollapse">
-        <div class="card-body">
-            <h5 class="card-title">{{myGame()?.title}}</h5>
-            <p class="card-text">★ {{myGame()?.stars}}</p>
-            <p class="card-text">{{myGame()?.review}}</p>
+    <div class="card-body card__content">
+        <h5 class="card-title">{{myGame()?.title}}</h5>
+        <p class="card-text card-date">{{myGame()?.date}}</p>
+        <div class="card-rating card-text">
+            <p class="card-stars">★ </p>
+            <p class="card-stars-2">{{myGame()?.stars}}</p>
         </div>
+        <p class="card-text card-review">{{myGame()?.review}}</p>
     </div>
 </div>
 

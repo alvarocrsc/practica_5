@@ -22,20 +22,33 @@ export class FormComponent {
   isWrapperVisible: boolean = true;
 
   getDataForm(gameForm: NgForm) {
+    if (gameForm.invalid) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please fill in all required fields before submitting.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+      return;
+    }
+
     let newGame: IGame =  {
       ...gameForm.value, 
       stars: this.rating
     };
+
     let response = this.gameService.Insert(newGame);
+
+    Swal.fire({
+      title: response.status ? 'Great!' : 'Ooops!',
+      text: response.msg,
+      icon: response.status ? 'success' : 'error',
+      confirmButtonText: 'OK'
+    })
+
     if (response.status) {
       gameForm.reset();
       this.rating = 0;
-      Swal.fire({
-        title: 'Felicidades!',
-        text: response.msg,
-        icon: 'success',
-        confirmButtonText: 'Gracias'
-      })
     }
   }
 

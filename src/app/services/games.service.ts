@@ -10,8 +10,15 @@ export class GamesService {
   private gamesArray: IGame[] = games;
 
   Insert(game: IGame): any {
+
+    const exists = this.gamesArray.some(g => g.title.toLowerCase() === game.title.toLowerCase());
+
+    if (exists) {
+      return { status: false, msg: 'This game is already logged!' };
+    }
+
     this.gamesArray.push(game);
-    console.log(this.gamesArray);
+    console.log(this.gamesArray)
     return {status: true, msg: 'Game added successfully'};
   }
 
